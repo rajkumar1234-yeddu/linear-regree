@@ -1,0 +1,33 @@
+#linear regression
+import numpy as np
+import matplotlib.pyplot as plt
+def mean(x):
+    len=0
+    sum=0
+    for i in x:
+        len+=1
+        sum+=i
+    return sum/len
+x=np.array([1,2,3,4,6,8])
+y=np.array([2.4,3,3.6,4,5,6])
+x_bar=mean(x)
+y_bar=mean(y)
+num=0
+den=0
+length=len(x)
+for i in range(length):
+    num+=((x[i]-x_bar)*(y[i]-y_bar))
+    den+=(x[i]-x_bar)**2
+slope=num/den
+slope=slope.round(4)
+print(f"slope={slope}")
+y_intercept=y_bar-(slope*x_bar)
+y_intercept=y_intercept.round(4)
+print(f"y_intercept={y_intercept}")
+print(f"the required line is y={slope}x+{y_intercept}")
+plt.scatter(x,y)
+plt.xlabel("X-axis")
+plt.ylabel("y-axis")
+plt.title("linear regression")
+plt.plot(x,slope*x+y_intercept)
+plt.show()
